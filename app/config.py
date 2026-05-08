@@ -9,6 +9,7 @@ AZURE_OPENAI_DEPLOYMENT: str = os.getenv("AZURE_OPENAI_DEPLOYMENT", "model-route
 AZURE_OPENAI_API_VERSION: str = os.getenv("AZURE_OPENAI_API_VERSION", "2024-12-01-preview")
 ALLOWED_ORIGINS: list[str] = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
 APP_ENV: str = os.getenv("APP_ENV", "development")
+PORTAL_BASE_URL: str = os.getenv("PORTAL_BASE_URL", "https://skoportalempresarialcorporateangularig.azurewebsites.net")
 
 if not AZURE_OPENAI_API_KEY:
     raise ValueError(

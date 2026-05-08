@@ -3,7 +3,8 @@ from pydantic import BaseModel
 from typing import Literal
 
 from app.services.anthropic_service import call_claude
-from app.prompts.chat_prompt import CHAT_SYSTEM_PROMPT
+from app.prompts.chat_prompt import get_chat_prompt
+from app.config import PORTAL_BASE_URL
 
 router = APIRouter()
 
@@ -31,7 +32,7 @@ def chat(body: ChatRequest):
     try:
         reply = call_claude(
             messages=[m.model_dump() for m in body.messages],
-            system_prompt=CHAT_SYSTEM_PROMPT,
+            system_prompt=get_chat_prompt(PORTAL_BASE_URL),
             max_tokens=600,
         )
         return ChatResponse(response=reply, status="ok")
